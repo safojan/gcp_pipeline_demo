@@ -1,0 +1,18 @@
+{
+  "name": "gcp-pipeline-demo",
+  "version": "1.0.0",
+  "description": "Demo app showing GCP Cloud Build, Cloud Run, Cloud SQL, and Cloud Secrets integration",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "@google-cloud/secret-manager": "^5.0.0",
+    "pg": "^8.11.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
