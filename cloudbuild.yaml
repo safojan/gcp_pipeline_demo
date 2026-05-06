@@ -15,7 +15,7 @@ steps:
       - 'deploy'
       - 'gcp-pipeline-demo'
       - '--image'
-      - 'us-central1-docker.pkg.dev/brandai-36abd/gcf-artifacts:$COMMIT_SHA'
+      - 'us-central1-docker.pkg.dev/brandai-36abd/gcf-artifacts/gcp-pipeline-demo:$COMMIT_SHA'
       - '--region'
       - 'us-central1'
       - '--platform'
