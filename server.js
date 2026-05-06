@@ -37,7 +37,7 @@ async function initDatabase() {
     dbPool = new Pool({
       user: dbSecret.username,
       password: dbSecret.password,
-      host: process.env.DB_HOST || '/cloudsql/' + process.env.INSTANCE_CONNECTION_NAME,
+      host: process.env.DB_HOST || '/cloudsql/' + "699656816818:us-central1:gcp-demo-db",
       database: dbSecret.database,
       port: dbSecret.port || 5432,
     });
