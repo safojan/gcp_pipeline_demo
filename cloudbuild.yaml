@@ -24,7 +24,7 @@ steps:
       - '--set-env-vars'
       - 'NODE_ENV=production'
       - '--set-secrets'
-      - 'DB_SECRET_NAME= demo_secrets:latest'
+      - 'DB_SECRET_NAME=demo_secrets:latest'
       - '--add-cloudsql-instances'
       - '${_INSTANCE_CONNECTION_NAME}'
 
