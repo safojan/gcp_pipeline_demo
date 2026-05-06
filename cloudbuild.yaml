@@ -26,7 +26,6 @@ steps:
       - '--set-secrets'
       - 'DB_SECRET_NAME=demo_secrets:latest'
       - '--service-account=699656816818-compute@developer.gserviceaccount.com'
-      - '--set-env-vars INSTANCE_CONNECTION_NAME=699656816818:us-central1:gcp-demo-db'
       - '--add-cloudsql-instances'
       - '${_INSTANCE_CONNECTION_NAME}'
 
