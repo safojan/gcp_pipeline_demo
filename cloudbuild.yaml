@@ -1,11 +1,11 @@
 steps:
   # Build the container image
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'us-central1-docker.pkg.dev/brandai-36abd/gcp-pipeline-demo/gcp-pipeline-demo:$COMMIT_SHA', '.']
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/brandai-36abd/gcf-artifacts:$COMMIT_SHA', '.']
   
   # Push the container image to Container Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'us-central1-docker.pkg.dev/brandai-36abd/gcp-pipeline-demo/gcp-pipeline-demo:$COMMIT_SHA']
+    args: ['push', 'us-central1-docker.pkg.dev/brandai-36abd/gcf-artifacts:$COMMIT_SHA']
   
   # Deploy container image to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
@@ -15,7 +15,7 @@ steps:
       - 'deploy'
       - 'gcp-pipeline-demo'
       - '--image'
-      - 'us-central1-docker.pkg.dev/brandai-36abd/gcp-pipeline-demo/gcp-pipeline-demo:$COMMIT_SHA'
+      - 'us-central1-docker.pkg.dev/brandai-36abd/gcf-artifacts:$COMMIT_SHA'
       - '--region'
       - 'us-central1'
       - '--platform'
@@ -29,7 +29,7 @@ steps:
       - '${_INSTANCE_CONNECTION_NAME}'
 
 images:
-  - 'us-central1-docker.pkg.dev/brandai-36abd/gcp-pipeline-demo/gcp-pipeline-demo:$COMMIT_SHA'
+  - 'us-central1-docker.pkg.dev/brandai-36abd/gcf-artifacts:$COMMIT_SHA'
 
 options:
   logging: CLOUD_LOGGING_ONLY
