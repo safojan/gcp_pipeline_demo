@@ -1,11 +1,11 @@
 steps:
   # Build the container image
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/699656816818/gcp-pipeline-demo:$COMMIT_SHA', '.']
+    args: ['build', '-t', 'gcr.io/brandai-36abd/gcp-pipeline-demo:$COMMIT_SHA', '.']
   
   # Push the container image to Container Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/699656816818/gcp-pipeline-demo:$COMMIT_SHA']
+    args: ['push', 'gcr.io/brandai-36abd/gcp-pipeline-demo:$COMMIT_SHA']
   
   # Deploy container image to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
@@ -15,7 +15,7 @@ steps:
       - 'deploy'
       - 'gcp-pipeline-demo'
       - '--image'
-      - 'gcr.io/699656816818/gcp-pipeline-demo:$COMMIT_SHA'
+      - 'gcr.io/brandai-36abd/gcp-pipeline-demo:$COMMIT_SHA'
       - '--region'
       - 'us-central1'
       - '--platform'
@@ -24,12 +24,12 @@ steps:
       - '--set-env-vars'
       - 'NODE_ENV=production'
       - '--set-secrets'
-      - 'DB_SECRET_NAME=db-credentials:latest'
+      - 'DB_SECRET_NAME= demo_secrets:latest'
       - '--add-cloudsql-instances'
       - '${_INSTANCE_CONNECTION_NAME}'
 
 images:
-  - 'gcr.io/699656816818/gcp-pipeline-demo:$COMMIT_SHA'
+  - 'gcr.io/brandai-36abd/gcp-pipeline-demo:$COMMIT_SHA'
 
 options:
   logging: CLOUD_LOGGING_ONLY
