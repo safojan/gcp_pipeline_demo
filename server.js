@@ -60,7 +60,7 @@ async function initDatabase() {
 
 // Health check endpoint
 app.get('/health', (req, res) => {
-  res.json({ status: 'healthy', timestamp: new Date().toISOString() });
+  res.json({ status: 'healthy version 1', timestamp: new Date().toISOString() });
 });
 
 // Root endpoint
