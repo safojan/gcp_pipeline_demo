@@ -26,8 +26,8 @@ steps:
       - '--set-secrets'
       - 'DB_SECRET_NAME=demo_secrets:latest'
       - '--service-account=699656816818-compute@developer.gserviceaccount.com'
-      - '--add-cloudsql-instances'
-      - '${_INSTANCE_CONNECTION_NAME}'
+      - '--set-cloudsql-instances'                    # ← was --add-cloudsql-instances
+      - 'brandai-36abd:us-central1:gcp-demo-db'
 
 images:
   - 'us-central1-docker.pkg.dev/brandai-36abd/gcf-artifacts/gcp-pipeline-demo:$COMMIT_SHA'
