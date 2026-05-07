@@ -14,17 +14,15 @@ const secretClient = new SecretManagerServiceClient();
 // Get database credentials from Secret Manager
 async function getDatabaseSecret() {
   try {
-    const secretName = process.env.DB_SECRET_NAME;
-    if (!secretName) {
+    // When using --set-secrets, the env var already contains the secret VALUE
+    const secretValue = process.env.DB_SECRET_NAME;
+    if (!secretValue) {
       console.log('DB_SECRET_NAME not set, skipping database connection');
       return null;
     }
-
-    const [version] = await secretClient.accessSecretVersion({ name: secretName });
-    const secretPayload = version.payload.data.toString('utf8');
-    return JSON.parse(secretPayload);
+    return JSON.parse(secretValue);  // Value is already the JSON, not a name
   } catch (error) {
-    console.error('Error accessing secret:', error.message);
+    console.error('Error parsing secret:', error.message);
     return null;
   }
 }
