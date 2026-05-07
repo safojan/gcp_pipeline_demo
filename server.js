@@ -31,7 +31,7 @@ async function initDatabase() {
       dbConn = await mysql.createPool({
         user: dbSecret.username,
         password: dbSecret.password,
-        socketPath: '/cloudsql/699656816818:us-central1:gcp-demo-db',
+        socketPath: '/cloudsql/brandai-36abd:us-central1:gcp-demo-db:us-central1:gcp-demo-db',
         database: dbSecret.database,
         waitForConnections: true,
         connectionLimit: 10,
